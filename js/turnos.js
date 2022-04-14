@@ -131,7 +131,7 @@ function getDaysInMonth(p_year, p_month) {
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// BUTTONS
+// LISTENERS
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function btnMesAnteriorClick() {
@@ -167,12 +167,36 @@ function btnVerDiasClick() {
 
 function btnReservarClick() {
 
+    if(cajaNombreDOM.value == ""){
+
+        cajaNombreDOM.classList.add('is-invalid');
+        cajaNombreErrorDOM.innerHTML = "Ingresá tu nombre";
+        return;
+
+    }
+
+    if(cajaApellidoDOM.value == ""){
+
+        cajaApellidoDOM.classList.add('is-invalid');
+        cajaApellidoErrorDOM.innerHTML = "Ingresá tu apellido";
+        return;
+
+    }
+
+    if(cajaTelefonoDOM.value == ""){
+
+        cajaTelefonoDOM.classList.add('is-invalid');
+        cajaTelefonoErrorDOM.innerHTML = "Ingresá tu telefono";
+        return;
+
+    }
+
     btnReservar.disabled = true;
     btnReservar.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Reservar`;
 
     sendObjet.nombre = cajaNombreDOM.value;
     sendObjet.apellido = cajaApellidoDOM.value;
-    sendObjet.motivo = cajaMotivoDOM.value;
+    sendObjet.telefono = cajaTelefonoDOM.value;
 
     //console.log(sendObjet);
 
@@ -180,10 +204,20 @@ function btnReservarClick() {
 
 }
 
+function cajaNombreInput(){
+    cajaNombreDOM.classList.remove('is-invalid');
+}
+function cajaApellidoInput(){
+    cajaApellidoDOM.classList.remove('is-invalid');
+}
+
 btnMesAnterior.addEventListener("click", btnMesAnteriorClick);
 btnMesSiguiente.addEventListener("click", btnMesSiguienteClick);
 btnVerDias.addEventListener("click", btnVerDiasClick);
 btnReservar.addEventListener("click", btnReservarClick);
+
+cajaNombreDOM.addEventListener("input", cajaNombreInput);
+cajaApellidoDOM.addEventListener("input", cajaApellidoInput);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // TABLE EVENTS
@@ -242,7 +276,16 @@ tbodyHorasDOM.addEventListener('click', function (e) {
 
         cajaNombreDOM.value = "";
         cajaApellidoDOM.value = "";
-        cajaMotivoDOM.value = "";
+        cajaTelefonoDOM.value = "";
+
+        cajaNombreDOM.classList.remove('is-invalid');
+        cajaApellidoDOM.classList.remove('is-invalid');
+        cajaTelefonoDOM.classList.remove('is-invalid');
+
+        cajaNombreErrorDOM.innerHTML = "";
+        cajaApellidoErrorDOM.innerHTML = "";
+        cajaTelefonoErrorDOM.innerHTML = "";
+
         cajaFechaDOM.value = dateCalendar.getDate()+" de "+meses[dateCalendar.getMonth()]+" del "+dateCalendar.getFullYear()+" - "+addZero(row.rowIndex+7)+":00 hs a "+addZero(row.rowIndex+8)+":00 hs";
 
         modalTurnoDOM.show();
@@ -471,8 +514,8 @@ function stopStoreUpdates() {
 
 function sendTurno(){
 
-    const docData = {[sendObjet.dia]: {[sendObjet.hora]: {paciente:{nombre:sendObjet.nombre, apellido:sendObjet.apellido}}, motivo:sendObjet.motivo} };
-    const docDataAdmin = {[sendObjet.dia]: {[sendObjet.hora]: {paciente:{nombre:sendObjet.nombre, apellido:sendObjet.apellido}}, motivo:sendObjet.motivo} };
+    const docData = {[sendObjet.dia]: {[sendObjet.hora]: {paciente:{nombre:sendObjet.nombre, apellido:sendObjet.apellido, telefono:sendObjet.telefono}}} };
+    const docDataAdmin = {[sendObjet.dia]: {[sendObjet.hora]: {paciente:{nombre:sendObjet.nombre, apellido:sendObjet.apellido, telefono:sendObjet.telefono}}} };
     
     // Get a new write batch
     const batch = writeBatch(db);

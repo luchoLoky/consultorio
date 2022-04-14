@@ -9,7 +9,7 @@
     <meta name="keywords" content="Dentista en Tres Arroyos, Odontologo en Tres Arroyos"/>
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -392,17 +392,20 @@
                         <div class="col">
                             <label for="cajaNombre" class="form-label fw-bold">Nombre</label>
                             <input id="cajaNombre" type="text" class="form-control" placeholder="Ingresá aquí tu nombre">
+                            <div class="invalid-feedback" id="cajaNombreError"></div>
                         </div>
                         <div class="col">
                             <label for="cajaApellido" class="form-label fw-bold">Apellido</label>
                             <input id="cajaApellido" type="text" class="form-control" placeholder="Ingresá aquí tu apellido">
+                            <div class="invalid-feedback" id="cajaApellidoError"></div>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col">
-                            <label for="cajaMotivo" class="form-label fw-bold">Motivo (opcional)</label>
-                            <input id="cajaMotivo" type="text" class="form-control" placeholder="Ingresá aquí el motivo de la consulta">
+                            <label for="cajaTelefono" class="form-label fw-bold">Telefono</label>
+                            <input id="cajaTelefono" type="text" class="form-control" placeholder="Ingresá aquí tu telefono">
+                            <div class="invalid-feedback" id="cajaTelefonoError"></div>
                         </div>
                         <div class="col">
                             <label for="cajaFecha" class="form-label fw-bold">Fecha</label>
@@ -458,8 +461,11 @@
 
         const modalTurnoDOM = new bootstrap.Modal(document.getElementById('modalTurno'));
         const cajaNombreDOM = document.getElementById("cajaNombre");
+        const cajaNombreErrorDOM = document.getElementById("cajaNombreError");
         const cajaApellidoDOM = document.getElementById("cajaApellido");
-        const cajaMotivoDOM = document.getElementById("cajaMotivo");
+        const cajaApellidoErrorDOM = document.getElementById("cajaApellidoError");
+        const cajaTelefonoDOM = document.getElementById("cajaTelefono");
+        const cajaTelefonoErrorDOM = document.getElementById("cajaTelefonoError");
         const cajaFechaDOM = document.getElementById("cajaFecha");
         const btnReservar = document.getElementById("btnReservar");
     </script>
