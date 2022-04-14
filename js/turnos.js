@@ -489,7 +489,7 @@ function sendTurno(){
             modalTurnoDOM.hide();
             btnReservar.disabled = false;
             btnReservar.innerHTML = `Reservar`;
-            notifier.success('Ya tenes tu turno reservado');
+            //notifier.success('Ya tenes tu turno reservado');
 
         })
         .catch(function(error) {
