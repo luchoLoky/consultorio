@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DentCare - Dental Clinic Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="lib/twentytwenty/twentytwenty.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+
+        .justificado {
+            justify-content: space-between;
+        }
+
+        th {
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        #tablaDias td {
+
+            width: 14.28571428571429% !important;
+            padding-bottom: 4% !important;
+
+            /*
+                width: calc(20% - 2px);
+                padding-bottom: calc(20% - 2px);
+                background-color: #ff0000; 
+                border: 1px solid #000; 
+                */
+        }
+
+        #tablaDias td.seleccionable:hover {
+            background-color: #DDDDDD !important;
+            color: #000000 !important;
+        }
+
+        #tablaHoras td {
+            text-align: center !important;
+            vertical-align: middle !important;
+            height: 50px !important;
+        }
+
+        #tablaHoras td.seleccionable:hover {
+            background-color: #DDDDDD;
+        }
+
+        .textoDeshabilitado {
+            color: #DDDDDD !important;
+        }
+
+        .noselect {
+            -webkit-touch-callout: none;
+            /* iOS Safari */
+            -webkit-user-select: none;
+            /* Safari */
+            -khtml-user-select: none;
+            /* Konqueror HTML */
+            -moz-user-select: none;
+            /* Old versions of Firefox */
+            -ms-user-select: none;
+            /* Internet Explorer/Edge */
+            user-select: none;
+            /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary m-1" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark m-1" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary m-1" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light ps-5 pe-0 d-none d-lg-block">
+        <div class="row gx-0">
+            <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    <small class="py-2"><i class="far fa-clock text-primary me-2"></i>Horarios: Lun a Sab : 8.00 am - 8.00 pm, Domingo Cerrado </small>
+                </div>
+            </div>
+            <div class="col-md-6 text-center text-lg-end">
+                <div class="position-relative d-inline-flex align-items-center bg-primary text-white top-shape px-5">
+                    <div class="me-3 pe-3 border-end py-2">
+                        <p class="m-0"><i class="fa fa-envelope-open me-2"></i>dental3@gmail.com</p>
+                    </div>
+                    <div class="py-2">
+                        <p class="m-0"><i class="fa fa-phone-alt me-2"></i>+54 2983-123456</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
+        <a href="index.html" class="navbar-brand p-0">
+            <h1 class="m-0 text-primary"><i class="fa fa-tooth me-2"></i>Dental3</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="nosotros.html" class="nav-item nav-link">Nosotros</a>
+                <a href="servicios.html" class="nav-item nav-link">Servicios</a>
+                <a href="contacto.html" class="nav-item nav-link">Contacto</a>
+            </div>
+            <!-- <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button> -->
+            <!-- <a href="appointment.html" class="btn btn-primary py-2 px-4 ms-3">Turnos Online</a> -->
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Hero Start -->
+    <div class="container-fluid bg-primary py-5 hero-header mb-5">
+        <div class="row py-3">
+            <div class="col-12 text-center">
+                <h1 class="display-3 text-white animated zoomIn">Turnos Online</h1>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+    <!-- Pricing Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-12">
+                    <div class="section-title mb-4">
+                        <h5 class="position-relative d-inline-block text-primary text-uppercase">Turnos online</h5>
+                        <h1 class="display-5 mb-0">Reserva tu turno sin moverte de tu casa</h1>
+                    </div>
+                    
+                    <!-- Calendario Start -->
+
+                    <div class="card ml-4 mr-4 mb-4" id="cardDias">
+
+                        <div class="card-body">
+            
+                            <div class="justificado d-flex mb-3">
+                                <div>
+                                    <button id="btnMesAnterior" type="button" class="btn btn-light">Mes anterior</button>
+                                </div>
+                                <div>
+                                    <h4 class="mt-1" id="tituloDias">Cargando turnos...</h4>
+                                </div>
+                                <div>
+                                    <button id="btnMesSiguiente" type="button" class="btn btn-light">Mes siguiente</button>
+                                </div>
+                            </div>
+            
+            
+                            <table class="table table-bordered noselect" id="tablaDias">
+            
+                                <thead>
+                                    <tr>
+                                        <th>Domingo</th>
+                                        <th>Lunes</th>
+                                        <th>Martes</th>
+                                        <th>Miercoles</th>
+                                        <th>Jueves</th>
+                                        <th>Viernes</th>
+                                        <th>Sabado</th>
+                                    </tr>
+                                </thead>
+            
+                                <tbody id="tbodyDias">
+            
+                                </tbody>
+            
+                            </table>
+            
+                        </div>
+            
+                    </div>
+
+                    <!-- Calendario End -->
+
+                    <!-- Horas Start -->
+
+                    <div class="card ml-4 mr-4 mb-4 visually-hidden" id="cardHoras">
+
+                        <div class="card-body">
+            
+                            <div class="justificado d-flex">
+                                <div>
+                                    <h4 class="mt-1" id="tituloHoras">6 de Abril 2022</h4>
+                                </div>
+                                <div>
+                                    <button id="btnVerDias" type="button" class="btn btn-light mb-3">Ver calendario</button>
+                                </div>
+                            </div>
+            
+                            <table class="table table-bordered noselect" id="tablaHoras">
+            
+                                <thead>
+                                    <tr>
+                                        <th scope="col" style="width: 210px;">Horarios</th>
+                                        <th scope="col">Disponibilidad</th>
+                                    </tr>
+                                </thead>
+            
+                                <tbody id="tbodyHoras">
+                                    <tr>
+                                        <th scope="row">08:00 hs a 09:00 hs</th>
+                                        <td id="hora8" class="textoDeshabilitado">TURNO PASADO</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">09:00 hs a 10:00 hs</th>
+                                        <td id="hora9" class="textoDeshabilitado">TURNO PASADO</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">10:00 hs a 11:00 hs</th>
+                                        <td id="hora10" class="textoDeshabilitado">OCUPADO</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">11:00 hs a 12:00 hs</th>
+                                        <td id="hora11" class="seleccionable">DISPONIBLE</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">12:00 hs a 13:00 hs</th>
+                                        <td id="hora12" class="seleccionable">DISPONIBLE</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">13:00 hs a 14:00 hs</th>
+                                        <td id="hora13" class="textoDeshabilitado">CERRADO</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">14:00 hs a 15:00 hs</th>
+                                        <td id="hora14" class="textoDeshabilitado">CERRADO</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">15:00 hs a 16:00 hs</th>
+                                        <td id="hora15" class="seleccionable">DISPONIBLE</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">16:00 hs a 17:00 hs</th>
+                                        <td id="hora16" class="seleccionable">DISPONIBLE</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">17:00 hs a 18:00 hs</th>
+                                        <td id="hora17" class="seleccionable">DISPONIBLE</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">18:00 hs a 19:00 hs</th>
+                                        <td id="hora18" class="seleccionable">DISPONIBLE</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">19:00 hs a 20:00 hs</th>
+                                        <td id="hora19" class="seleccionable">DISPONIBLE</td>
+                                    </tr>
+                                </tbody>
+            
+                            </table>
+            
+                        </div>
+            
+                    </div>
+
+                    <!-- Horas End -->
+
+                    <h5 class="text-uppercase text-primary wow fadeInUp" data-wow-delay="0.3s">Tambien podes llamarnos y reservar tu turno telefonicamente</h5>
+                    <h1 class="wow fadeInUp" data-wow-delay="0.6s">+54 2983 123456</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pricing End -->
+    
+
+    <!-- Newsletter Start -->
+    <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
+        <div class="container">
+            <div class="bg-primary p-5">
+                <form class="mx-auto" style="max-width: 600px;">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-white p-3" placeholder="Ingresa tu email para recibir novedades">
+                        <button class="btn btn-dark px-4">Suscribirme</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Newsletter End -->
+    
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: -75px;">
+        <div class="container pt-5">
+            <div class="row g-5 pt-4">
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="text-white mb-4">Secciones</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-light mb-2" href="index.html"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-light mb-2" href="nosotros.html"><i class="bi bi-arrow-right text-primary me-2"></i>Nosotros</a>
+                        <a class="text-light mb-2" href="servicios.html"><i class="bi bi-arrow-right text-primary me-2"></i>Servicios</a>
+                        <a class="text-light" href="contacto.html"><i class="bi bi-arrow-right text-primary me-2"></i>Contacto</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="text-white mb-4">Noticias</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Gaceta Dental</a>
+                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Blog Odontologico</a>
+                        <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Odonto Diario</a>
+                        <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Dental News</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="text-white mb-4">Contactanos</h3>
+                    <p class="mb-2"><i class="bi bi-geo-alt text-primary me-2"></i>Lucio V. Lopez 37 (Of. A)</p>
+                    <p class="mb-2"><i class="bi bi bi-globe text-primary me-2"></i>Tres Arroyos, Buenos Aires</p>
+                    <p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>dental3@gmail.com</p>
+                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i>+54 2983 123456</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="text-white mb-4">Seguinos</h3>
+                    <div class="d-flex">
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-light py-4" style="background: #051225;">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-md-0">&copy; <a class="text-white border-bottom" href="#">Dental3</a>. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- MODAL TURNO -->
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <div class="modal fade" id="modalTurno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModal">Reservar Turno</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="cajaNombre" class="form-label fw-bold">Nombre</label>
+                            <input id="cajaNombre" type="text" class="form-control" placeholder="Ingresá aquí tu nombre">
+                        </div>
+                        <div class="col">
+                            <label for="cajaApellido" class="form-label fw-bold">Apellido</label>
+                            <input id="cajaApellido" type="text" class="form-control" placeholder="Ingresá aquí tu apellido">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="cajaMotivo" class="form-label fw-bold">Motivo (opcional)</label>
+                            <input id="cajaMotivo" type="text" class="form-control" placeholder="Ingresá aquí el motivo de la consulta">
+                        </div>
+                        <div class="col">
+                            <label for="cajaFecha" class="form-label fw-bold">Fecha</label>
+                            <input id="cajaFecha" type="text" class="form-control" disabled>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button data-bs-dismiss="modal" type="button" class="btn btn-outline-dark">Cancelar</button>
+                    <button id="btnReservar" type="button" class="btn btn-dark">Reservar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="lib/twentytwenty/jquery.event.move.js"></script>
+    <script src="lib/twentytwenty/jquery.twentytwenty.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+    <script>
+        function addZero(n) {
+            return n < 10 ? '0' + n : '' + n;
+        }
+        const appContainerDOM = document.getElementById("appContainer");
+        const cardDiasDOM = document.getElementById("cardDias");
+        const cardHorasDOM = document.getElementById("cardHoras");
+        const tbodyDiasDOM = document.getElementById("tbodyDias");
+        const tbodyHorasDOM = document.getElementById("tbodyHoras");
+        const tituloDiasDOM = document.getElementById("tituloDias");
+        const tituloHorasDOM = document.getElementById("tituloHoras");
+
+        const btnMesAnterior = document.getElementById("btnMesAnterior");
+        const btnMesSiguiente = document.getElementById("btnMesSiguiente");
+        const btnVerDias = document.getElementById("btnVerDias");
+
+        const modalTurnoDOM = new bootstrap.Modal(document.getElementById('modalTurno'));
+        const cajaNombreDOM = document.getElementById("cajaNombre");
+        const cajaApellidoDOM = document.getElementById("cajaApellido");
+        const cajaMotivoDOM = document.getElementById("cajaMotivo");
+        const cajaFechaDOM = document.getElementById("cajaFecha");
+        const btnReservar = document.getElementById("btnReservar");
+    </script>
+
+    <script src="js/turnos.js" type="module"></script>
+
+</body>
+
+</html>
