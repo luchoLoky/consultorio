@@ -1,0 +1,381 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Consultorio</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../notifications/style.css"></link>
+    <script src="../notifications/index.var.js"></script>
+
+
+    <style>
+        .styleContainer {
+            padding-top: 16px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+        }
+
+        .justificado {
+            justify-content: space-between;
+        }
+
+        th {
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        #tablaDias td {
+
+            width: 14.28571428571429% !important;
+            padding-bottom: 4% !important;
+
+            /*
+                width: calc(20% - 2px);
+                padding-bottom: calc(20% - 2px);
+                background-color: #ff0000; 
+                border: 1px solid #000; 
+                */
+        }
+
+        #tablaDias td.seleccionable:hover {
+            background-color: #DDDDDD !important;
+            color: #000000 !important;
+        }
+
+        #tablaHoras td {
+            text-align: center !important;
+            vertical-align: middle !important;
+            height: 50px !important;
+        }
+
+        #tablaHoras td.seleccionable:hover {
+            background-color: #DDDDDD;
+        }
+
+        .textoDeshabilitado {
+            color: #DDDDDD !important;
+        }
+
+        .noselect {
+            -webkit-touch-callout: none;
+            /* iOS Safari */
+            -webkit-user-select: none;
+            /* Safari */
+            -khtml-user-select: none;
+            /* Konqueror HTML */
+            -moz-user-select: none;
+            /* Old versions of Firefox */
+            -ms-user-select: none;
+            /* Internet Explorer/Edge */
+            user-select: none;
+            /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+        }
+
+        body {
+            margin: 0;
+        }
+
+        #loaderContainer {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            top: 0;
+        }
+        
+        #loginContainer {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            top: 0;
+        }
+
+        .centrar {
+            display: flex;
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="loaderContainer">
+        <h4 class="centrar">Iniciando...</h4>
+    </div>
+
+    <div id="loginContainer" class="visually-hidden">
+        <div class="container h-100">
+            <div class="row justify-content-sm-center h-100">
+                <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+                    <div class="text-center my-5">
+                        <img src="icon.svg" alt="logo" width="100">
+                    </div>
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <h1 class="fs-4 card-title fw-bold mb-4">Ingresar</h1>
+                            <div class="mb-3">
+                                <label class="mb-2 text-muted" for="caja_email">E-Mail</label>
+                                <input id="caja_email" type="email" class="form-control" name="email" value="" required autofocus>
+                                <div class="invalid-feedback">Email is invalid</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="mb-2 w-100">
+                                    <label class="text-muted" for="caja_password">Password</label>
+                                </div>
+                                <input id="caja_password" type="password" class="form-control" name="password" required>
+                                <div class="invalid-feedback">Password is required</div>
+                            </div>
+
+                            <div class="d-flex align-items-center">
+                                <button id="btnIngresar" type="button" class="btn btn-primary ms-auto">INGRESAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- APP CONTAINER -->
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <div class="container-fluid styleContainer visually-hidden" id="appContainer">
+
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- TITULO -->
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+        <!-- <h3 class="mb-4 mt-2">Turnos</h3> -->
+
+        <h3 class="mb-4 mt-2">Consultorio<small class="text-muted"> - Turnos</small></h3>
+
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- CARD DIAS -->
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+        <div class="card ml-4 mr-4 mb-4" id="cardDias">
+
+            <div class="card-body">
+
+                <div class="justificado d-flex mb-3">
+                    <div>
+                        <button id="btnMesAnterior" type="button" class="btn btn-light">Mes anterior</button>
+                    </div>
+                    <div>
+                        <h4 class="mt-1" id="tituloDias">Cargando turnos...</h4>
+                    </div>
+                    <div>
+                        <button id="btnMesSiguiente" type="button" class="btn btn-light">Mes siguiente</button>
+                    </div>
+                </div>
+
+
+                <table class="table table-bordered noselect" id="tablaDias">
+
+                    <thead>
+                        <tr>
+                            <th>Domingo</th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miercoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                            <th>Sabado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbodyDias">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- CARD HORAS -->
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+        <div class="card ml-4 mr-4 mb-4 visually-hidden" id="cardHoras">
+
+            <div class="card-body">
+
+                <div class="justificado d-flex">
+                    <div>
+                        <h4 class="mt-1" id="tituloHoras">6 de Abril 2022</h4>
+                    </div>
+                    <div>
+                        <button id="btnVerDias" type="button" class="btn btn-light mb-3">Ver calendario</button>
+                    </div>
+                </div>
+
+                <table class="table table-bordered noselect" id="tablaHoras">
+
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 210px;">Horarios</th>
+                            <th scope="col">Disponibilidad</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tbodyHoras">
+                        <tr>
+                            <th scope="row">08:00 hs a 09:00 hs</th>
+                            <td id="hora8" class="textoDeshabilitado">TURNO PASADO</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">09:00 hs a 10:00 hs</th>
+                            <td id="hora9" class="textoDeshabilitado">TURNO PASADO</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10:00 hs a 11:00 hs</th>
+                            <td id="hora10" class="textoDeshabilitado">OCUPADO</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">11:00 hs a 12:00 hs</th>
+                            <td id="hora11" class="seleccionable">DISPONIBLE</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">12:00 hs a 13:00 hs</th>
+                            <td id="hora12" class="seleccionable">DISPONIBLE</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">13:00 hs a 14:00 hs</th>
+                            <td id="hora13" class="textoDeshabilitado">CERRADO</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">14:00 hs a 15:00 hs</th>
+                            <td id="hora14" class="textoDeshabilitado">CERRADO</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">15:00 hs a 16:00 hs</th>
+                            <td id="hora15" class="seleccionable">DISPONIBLE</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">16:00 hs a 17:00 hs</th>
+                            <td id="hora16" class="seleccionable">DISPONIBLE</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">17:00 hs a 18:00 hs</th>
+                            <td id="hora17" class="seleccionable">DISPONIBLE</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">18:00 hs a 19:00 hs</th>
+                            <td id="hora18" class="seleccionable">DISPONIBLE</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">19:00 hs a 20:00 hs</th>
+                            <td id="hora19" class="seleccionable">DISPONIBLE</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <!-- MODAL TURNO -->
+    <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- Modal Start -->
+    <div class="modal fade" id="modalTurno" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleModal">Reservar Turno</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="cajaNombre" class="form-label fw-bold">Nombre</label>
+                            <input id="cajaNombre" type="text" class="form-control" placeholder="Ingresá aquí tu nombre">
+                            <div class="invalid-feedback" id="cajaNombreError"></div>
+                        </div>
+                        <div class="col">
+                            <label for="cajaApellido" class="form-label fw-bold">Apellido</label>
+                            <input id="cajaApellido" type="text" class="form-control" placeholder="Ingresá aquí tu apellido">
+                            <div class="invalid-feedback" id="cajaApellidoError"></div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="cajaTelefono" class="form-label fw-bold">Telefono</label>
+                            <input id="cajaTelefono" type="text" class="form-control" placeholder="Ingresá aquí tu telefono">
+                            <div class="invalid-feedback" id="cajaTelefonoError"></div>
+                        </div>
+                        <div class="col">
+                            <label for="cajaFecha" class="form-label fw-bold">Fecha</label>
+                            <input id="cajaFecha" type="text" class="form-control" disabled>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button data-bs-dismiss="modal" type="button" class="btn btn-outline-dark">Cancelar</button>
+                    <button id="btnReservar" type="button" class="btn btn-dark">Reservar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        function addZero(n) {
+            return n < 10 ? '0' + n : '' + n;
+        }
+        const appContainerDOM = document.getElementById("appContainer");
+        const cardDiasDOM = document.getElementById("cardDias");
+        const cardHorasDOM = document.getElementById("cardHoras");
+        const tbodyDiasDOM = document.getElementById("tbodyDias");
+        const tbodyHorasDOM = document.getElementById("tbodyHoras");
+        const tituloDiasDOM = document.getElementById("tituloDias");
+        const tituloHorasDOM = document.getElementById("tituloHoras");
+
+        const btnMesAnterior = document.getElementById("btnMesAnterior");
+        const btnMesSiguiente = document.getElementById("btnMesSiguiente");
+        const btnVerDias = document.getElementById("btnVerDias");
+
+        const modalTurnoDOM = new bootstrap.Modal(document.getElementById('modalTurno'));
+        const cajaNombreDOM = document.getElementById("cajaNombre");
+        const cajaNombreErrorDOM = document.getElementById("cajaNombreError");
+        const cajaApellidoDOM = document.getElementById("cajaApellido");
+        const cajaApellidoErrorDOM = document.getElementById("cajaApellidoError");
+        const cajaTelefonoDOM = document.getElementById("cajaTelefono");
+        const cajaTelefonoErrorDOM = document.getElementById("cajaTelefonoError");
+        const cajaFechaDOM = document.getElementById("cajaFecha");
+        const btnReservar = document.getElementById("btnReservar");
+        const btnIngresar = document.getElementById("btnIngresar");
+    </script>
+    <script src="./index.js" type="module"></script>
+</body>
+
+</html>
