@@ -535,7 +535,7 @@ function startStoreUpdates(p_year, p_month) {
 
     const idDoc = p_year+"-"+addZero(p_month+1);
     
-    storeUpdates = onSnapshot(doc(db, "turnos", idDoc), (doc) => {
+    storeUpdates = onSnapshot(doc(db, "turnos_admin", idDoc), (doc) => {
 
         turnosJSON = doc.data();
         //console.log("onSnapshot: ", turnosJSON);
@@ -558,7 +558,8 @@ function stopStoreUpdates() {
 
 function sendTurno(){
 
-    const docData = {[sendObjet.dia]: {[sendObjet.hora]: {paciente:{nombre:sendObjet.nombre, apellido:sendObjet.apellido, telefono:sendObjet.telefono}}} };
+    //const docData = {[sendObjet.dia]: {[sendObjet.hora]: {paciente:{nombre:sendObjet.nombre, apellido:sendObjet.apellido, telefono:sendObjet.telefono}}} };
+    const docData = {[sendObjet.dia]: {[sendObjet.hora]: {}} };
     const docDataAdmin = {[sendObjet.dia]: {[sendObjet.hora]: {paciente:{nombre:sendObjet.nombre, apellido:sendObjet.apellido, telefono:sendObjet.telefono}}} };
     
     // Get a new write batch
