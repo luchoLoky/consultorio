@@ -19,11 +19,11 @@ let sendObjet = {};
 
 // Set global options
 let globalOptions =  {};
-globalOptions.icons = {enabled: false};
+//globalOptions.icons = {enabled: false};
 globalOptions.position = "top-right";
 globalOptions.labels = {success: "Listo!"}
 
-//let notifier = new AWN(globalOptions);
+let notifier = new AWN(globalOptions);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // TIME
@@ -514,7 +514,7 @@ function stopStoreUpdates() {
 
 function sendTurno(){
 
-    const docData = {[sendObjet.dia]: {[sendObjet.hora]: {paciente:{nombre:sendObjet.nombre, apellido:sendObjet.apellido, telefono:sendObjet.telefono}}} };
+    const docData = {[sendObjet.dia]: {[sendObjet.hora]: {}} };
     const docDataAdmin = {[sendObjet.dia]: {[sendObjet.hora]: {paciente:{nombre:sendObjet.nombre, apellido:sendObjet.apellido, telefono:sendObjet.telefono}}} };
     
     // Get a new write batch
@@ -532,7 +532,7 @@ function sendTurno(){
             modalTurnoDOM.hide();
             btnReservar.disabled = false;
             btnReservar.innerHTML = `Reservar`;
-            //notifier.success('Ya tenes tu turno reservado');
+            notifier.success('Ya tenes tu turno reservado');
 
         })
         .catch(function(error) {
